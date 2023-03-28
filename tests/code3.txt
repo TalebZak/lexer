@@ -1,0 +1,40 @@
+const int size = 6
+const bool myFlag = true
+
+function int my_function1(int a, int b) {
+  return a + b
+}
+
+function bool my_function2(bool a, bool b) {
+  return a or b
+}
+
+function void my_function3(int a) {
+  int i = 0
+  while (i < a) {
+    move(north)
+    i = i + 1
+  }
+}
+
+init {
+  grid_size(6, 6)
+  place_agent(0, 0)
+  place_wumpus(4, 4)
+  place_gold(3, 3)
+  place_pit(1, 4)
+  place_pit(3, 2)
+}
+
+play {
+  if (my_function2(myFlag, sense_glitter())) {
+    grab()
+    my_function3(3)
+  }
+  int sum = my_function1(1, 2)
+  int i = 0
+  while (i < sum) {
+    move(east)
+    i = i + 1
+  }
+}

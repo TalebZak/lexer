@@ -1,0 +1,9 @@
+int a = 7
+int b = 7
+Grab(7,6)
+Shoot(west)
+Sense()
+if a == b {
+    a = a + 1
+}
+$hi there$

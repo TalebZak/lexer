@@ -1,0 +1,188 @@
++------------+--------------+------+----------+
+| Token Type |    Value     | Line | Position |
++------------+--------------+------+----------+
+|     ID     |     Init     |  1   |    0     |
+|  NEWLINE   |              |  1   |    4     |
+|            |              |      |          |
+|   LBRACE   |      {       |  1   |    5     |
+|  NEWLINE   |              |  1   |    6     |
+|            |              |      |          |
+|     ID     | place_wumpus |  1   |    7     |
+|   LPAREN   |      (       |  1   |    19    |
+|  INTEGER   |      4       |  1   |    20    |
+|   COMMA    |      ,       |  1   |    21    |
+|  INTEGER   |      0       |  1   |    22    |
+|   RPAREN   |      )       |  1   |    23    |
+|  NEWLINE   |              |  1   |    24    |
+|            |              |      |          |
+|  NEWLINE   |              |  1   |    25    |
+|            |              |      |          |
+|     ID     |  place_gold  |  1   |    26    |
+|   LPAREN   |      (       |  1   |    36    |
+|  INTEGER   |      2       |  1   |    37    |
+|   COMMA    |      ,       |  1   |    38    |
+|  INTEGER   |      3       |  1   |    39    |
+|   RPAREN   |      )       |  1   |    40    |
+|  NEWLINE   |              |  1   |    41    |
+|            |              |      |          |
+|  NEWLINE   |              |  1   |    42    |
+|            |              |      |          |
+|     ID     |  place_pit   |  1   |    43    |
+|   LPAREN   |      (       |  1   |    52    |
+|  INTEGER   |      0       |  1   |    53    |
+|   COMMA    |      ,       |  1   |    54    |
+|  INTEGER   |      1       |  1   |    55    |
+|   RPAREN   |      )       |  1   |    56    |
+|  NEWLINE   |              |  1   |    57    |
+|            |              |      |          |
+|  NEWLINE   |              |  1   |    58    |
+|            |              |      |          |
+|     ID     | clear_rooom  |  1   |    59    |
+|   LPAREN   |      (       |  1   |    70    |
+|  INTEGER   |      0       |  1   |    71    |
+|   COMMA    |      ,       |  1   |    72    |
+|  INTEGER   |      0       |  1   |    73    |
+|   RPAREN   |      )       |  1   |    74    |
+|  NEWLINE   |              |  1   |    75    |
+|            |              |      |          |
+|   RBRACE   |      }       |  1   |    76    |
+|  NEWLINE   |              |  1   |    77    |
+|            |              |      |          |
+|  NEWLINE   |              |  1   |    78    |
+|            |              |      |          |
+|     ID     |     Play     |  1   |    79    |
+|  NEWLINE   |              |  1   |    83    |
+|            |              |      |          |
+|  NEWLINE   |              |  1   |    84    |
+|            |              |      |          |
+|   LBRACE   |      {       |  1   |    85    |
+|  NEWLINE   |              |  1   |    86    |
+|            |              |      |          |
+|  NEWLINE   |              |  1   |    87    |
+|            |              |      |          |
+|     ID     |     Move     |  1   |    88    |
+|   LPAREN   |      (       |  1   |    92    |
+|     ID     |     east     |  1   |    93    |
+|   RPAREN   |      )       |  1   |    97    |
+|  NEWLINE   |              |  1   |    98    |
+|            |              |      |          |
+|  NEWLINE   |              |  1   |    99    |
+|            |              |      |          |
+|     ID     |    sense     |  1   |   100    |
+|   LPAREN   |      (       |  1   |   105    |
+|   RPAREN   |      )       |  1   |   106    |
+|  NEWLINE   |              |  1   |   107    |
+|            |              |      |          |
+|  NEWLINE   |              |  1   |   108    |
+|            |              |      |          |
+|     ID     |   compare    |  1   |   109    |
+|   LPAREN   |      (       |  1   |   116    |
+|   RPAREN   |      )       |  1   |   117    |
+|  NEWLINE   |              |  1   |   118    |
+|            |              |      |          |
+|  NEWLINE   |              |  1   |   119    |
+|            |              |      |          |
+|   RBRACE   |      }       |  1   |   120    |
+|  NEWLINE   |              |  1   |   121    |
+|            |              |      |          |
+|  NEWLINE   |              |  1   |   122    |
+|            |              |      |          |
+|     ID     |     Play     |  1   |   123    |
+|  NEWLINE   |              |  1   |   127    |
+|            |              |      |          |
+|  NEWLINE   |              |  1   |   128    |
+|            |              |      |          |
+|   LBRACE   |      {       |  1   |   129    |
+|  NEWLINE   |              |  1   |   130    |
+|            |              |      |          |
+|  NEWLINE   |              |  1   |   131    |
+|            |              |      |          |
+|     ID     |     Move     |  1   |   132    |
+|   LPAREN   |      (       |  1   |   136    |
+|     ID     |     east     |  1   |   137    |
+|   RPAREN   |      )       |  1   |   141    |
+|  NEWLINE   |              |  1   |   142    |
+|            |              |      |          |
+|  NEWLINE   |              |  1   |   143    |
+|            |              |      |          |
+|     ID     |    sense     |  1   |   144    |
+|   LPAREN   |      (       |  1   |   149    |
+|   RPAREN   |      )       |  1   |   150    |
+|  NEWLINE   |              |  1   |   151    |
+|            |              |      |          |
+|  NEWLINE   |              |  1   |   152    |
+|            |              |      |          |
+|     ID     |   compare    |  1   |   153    |
+|   LPAREN   |      (       |  1   |   160    |
+|   RPAREN   |      )       |  1   |   161    |
+|  NEWLINE   |              |  1   |   162    |
+|            |              |      |          |
+|  NEWLINE   |              |  1   |   163    |
+|            |              |      |          |
+|   RBRACE   |      }       |  1   |   164    |
+|  NEWLINE   |              |  1   |   165    |
+|            |              |      |          |
+|  NEWLINE   |              |  1   |   166    |
+|            |              |      |          |
+|     ID     |     Play     |  1   |   167    |
+|  NEWLINE   |              |  1   |   171    |
+|            |              |      |          |
+|  NEWLINE   |              |  1   |   172    |
+|            |              |      |          |
+|   LBRACE   |      {       |  1   |   173    |
+|  NEWLINE   |              |  1   |   174    |
+|            |              |      |          |
+|  NEWLINE   |              |  1   |   175    |
+|            |              |      |          |
+|     ID     |     grab     |  1   |   176    |
+|   LPAREN   |      (       |  1   |   180    |
+|   RPAREN   |      )       |  1   |   181    |
+|  NEWLINE   |              |  1   |   182    |
+|            |              |      |          |
+|  NEWLINE   |              |  1   |   183    |
+|            |              |      |          |
+|     ID     |    sense     |  1   |   184    |
+|   LPAREN   |      (       |  1   |   189    |
+|   RPAREN   |      )       |  1   |   190    |
+|  NEWLINE   |              |  1   |   191    |
+|            |              |      |          |
+|  NEWLINE   |              |  1   |   192    |
+|            |              |      |          |
+|     ID     |   compare    |  1   |   193    |
+|   LPAREN   |      (       |  1   |   200    |
+|   RPAREN   |      )       |  1   |   201    |
+|  NEWLINE   |              |  1   |   202    |
+|            |              |      |          |
+|  NEWLINE   |              |  1   |   203    |
+|            |              |      |          |
+|   RBRACE   |      }       |  1   |   204    |
+|  NEWLINE   |              |  1   |   205    |
+|            |              |      |          |
+|  NEWLINE   |              |  1   |   206    |
+|            |              |      |          |
+|     ID     |     Play     |  1   |   207    |
+|  NEWLINE   |              |  1   |   211    |
+|            |              |      |          |
+|   LBRACE   |      {       |  1   |   212    |
+|  NEWLINE   |              |  1   |   213    |
+|            |              |      |          |
+|     ID     |     Move     |  1   |   214    |
+|   LPAREN   |      (       |  1   |   218    |
+|     ID     |     west     |  1   |   219    |
+|   RPAREN   |      )       |  1   |   223    |
+|  NEWLINE   |              |  1   |   224    |
+|            |              |      |          |
+|     ID     |    sense     |  1   |   225    |
+|   LPAREN   |      (       |  1   |   230    |
+|   RPAREN   |      )       |  1   |   231    |
+|  NEWLINE   |              |  1   |   232    |
+|            |              |      |          |
+|     ID     |   compare    |  1   |   233    |
+|   LPAREN   |      (       |  1   |   240    |
+|   RPAREN   |      )       |  1   |   241    |
+|  NEWLINE   |              |  1   |   242    |
+|            |              |      |          |
+|  NEWLINE   |              |  1   |   243    |
+|            |              |      |          |
+|   RBRACE   |      }       |  1   |   244    |
++------------+--------------+------+----------+

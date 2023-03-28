@@ -1,0 +1,34 @@
+const int size = 5
+const bool anotherFlag = false
+
+function int my_function4(int a, int b) {
+  return a + b
+}
+
+function int my_function5(int a, int b) {
+  return my_function4(a, b) - a
+}
+
+function void my_function6() {
+  move(south)
+  move(south)
+}
+
+init {
+  grid_size(5, 5)
+  place_agent(0, 0)
+  place_wumpus(4, 4)
+  place_gold(4, 0)
+}
+
+play {
+  if (anotherFlag == false) {
+    my_function6()
+    int result = my_function5(1, 2)
+    int i = 0
+    while (i < result) {
+      move(east)
+      i = i + 1
+    }
+  }
+}
