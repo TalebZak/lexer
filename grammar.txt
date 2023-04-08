@@ -1,0 +1,43 @@
+<program> ::= <declarations> <init_block> <play_block>
+<declarations> ::= {<declaration>}
+<declaration> ::= <function_declaration> | <constant_declaration>
+<function_declaration> ::= FUNCTION <return_type> ID LPAREN [<formal_params> {, <formal_params>}] RPAREN <block>
+<formal_params> ::= DATATYPE ID
+<return_type> ::= DATATYPE | VOID
+<constant_declaration> ::= CONSTANT DATATYPE ID ASSIGNMENT (INTEGER | BOOLEAN)
+<init_block> ::= INIT LBRACE <grid_size> <mandatory_agent> <mandatory_wumpus> <mandatory_gold> {<init_statement>} RBRACE
+<grid_size> ::= GRID_SIZE LPAREN <location> RPAREN
+<mandatory_agent> ::= PLACE_AGENT LPAREN <location> RPAREN
+<mandatory_wumpus> ::= PLACE_WUMPUS LPAREN <location> RPAREN
+<mandatory_gold> ::= PLACE_GOLD LPAREN <location> RPAREN
+
+<init_statement> ::= PLACE_PIT LPAREN <location> RPAREN | CLEAR_ROOM LPAREN <location> RPAREN
+<location> ::= INTEGER COMMA INTEGER
+<play_block> ::= PLAY LBRACE <statement> {<statement>} RBRACE
+<statement> ::= <move_statement> | <shoot_statement> | <grab_statement> | <print_position_statement> | <if_statement> | <while_statement> | <assignment> | <function_call> | <return_statement>
+
+<move_statement> ::= MOVE LPAREN <direction> RPAREN
+<shoot_statement> ::= SHOOT LPAREN <direction> RPAREN
+<grab_statement> ::= GRAB LPAREN RPAREN
+<sense> ::= <sense_stench_statement> | <sense_breeze_statement> | <sense_glitter_statement>
+<sense_stench_statement> ::= SENSE_STENCH LPAREN RPAREN
+<sense_breeze_statement> ::= SENSE_BREEZE LPAREN RPAREN
+<sense_glitter_statement> ::= SENSE_GLITTER LPAREN RPAREN
+<print_position_statement> ::= PRINT_POSITION LPAREN RPAREN
+<direction> ::= NORTH | SOUTH | EAST | WEST
+
+<if_statement> ::= IF LPAREN <conditional_expression> RPAREN <block> [ELSE <block>]
+<while_statement> ::= WHILE LPAREN <conditional_expression> RPAREN <block>
+<assignment> ::= <var> ASSIGNMENT  <factor>
+<function_call> ::= ID LPAREN [ID {, ID}] RPAREN
+<return_statement> ::= RETURN <element> 
+<block> ::= LBRACE <statement> { <statement> } RBRACE
+
+<conditional_expression> ::= <term> { LOGIC <term>}
+<term> ::= <element> { COMPARISON <element>}
+<element> ::= <factor> | <sense>
+
+<factor> ::= <operand> { OPERATOR <operand>}
+<operand> ::= BOOLEAN | INTEGER | <function_call> | <var>
+<var> ::= ID [LEFTBRACKET <> RIGHTBRACKET]
+
