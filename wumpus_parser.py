@@ -118,6 +118,7 @@ def ID(token_stream, parent):
     # if the current token is not an ID, raise an error
     raise ExpectationError(token, 'ID')
 
+
 def INTEGER(token_stream):
     # if the current token is an INT
     token = token_stream.get_token()
@@ -144,6 +145,46 @@ def BOOLEAN(token_stream):
 
 def direction(token_stream):
     # a direction is either a token EAST, WEST, NORTH, SOUTH
+    token = token_stream.get_token()
+    if token.token_type in ['EAST', 'WEST', 'NORTH', 'SOUTH']:
+        # create a node with the token as the value
+        node = TreeNode('DIRECTION', token=token)
+        # return the node
+        return node
+    if token.token_type == 'EOF':
+        raise MissingTokenError('DIRECTION')
+    raise ExpectationError(token, 'DIRECTION')
+
+
+
+def exprbase(token_stream):
+    # This is based on the production: <exprbase> ::= ‘(‘ <expr> ‘)’ | ID [LEFTBRACKET <expr> RIGHTBRACKET]  |  <function_call> | INTEGER | BOOLEAN
+    # get the current token
+    token = token_stream.get_token()
+    # if the current token is a left parenthesis
+    if token.token_type == 'LEFTPAREN':
+        # create a node with the token as the value
+        node = TreeNode('<exprbase>', token=token)
+        # add the expression as a child
+        node.add_child(expr(token_stream))
+        # get the next token
+        token = token_stream.get_token()
+        # if the next token is a right parenthesis
+        if token.token_type == 'RIGHTPAREN':
+            # add the token as a child
+            node.add_child(TreeNode('RIGHTPAREN', token=token))
+            # return the node
+            return node
+        if token.token_type == 'EOF':
+            raise MissingTokenError('RIGHTPAREN')
+        raise ExpectationError(token, 'RIGHTPAREN')
+    # if the current token is an ID
+    elif token.token_type == 'ID':
+        # create a node with the token as the value
+        node = TreeNode(ID(token_stream, node))
+
+
+
     
 def parse(token_stream):
     print("Parsing...")
@@ -160,7 +201,6 @@ def run(token_stream, output_file):
     output_file.write(str(cst))
 def main():
     parse = argparse.ArgumentParser()
-    parse.add_argument('-d', '--debug', help='Activate debug mode', action='store_true')
     parse.add_argument('-o', '--output', help='Add file path to the output file', type=str)
 
     args = parse.parse_args()
@@ -170,21 +210,17 @@ def main():
     if args.file is None:
         # set color to red and bright
         print_fancy("")
-        print_fancy("Error: Input file missing", fill_char='*')
-        print_fancy("")
 
         print("Usage:")
         print_fancy("python3 wumpus_parser.py", fill_char='.')
 
         print("Parameters:")
-        print_fancy(Fore.CYAN + Style.BRIGHT + "-d, --debug" + Style.RESET_ALL, fill_char='=')
-        print("\tExecute the program in debug mode")
         print_fancy(Fore.CYAN + Style.BRIGHT + "-o, --output" + Style.RESET_ALL, fill_char='=')
         print("\tSpecify the output file path")
 
         print_fancy("", fill_char='-')
         exit(1)
-    source_code = args.file
+    source_code = "output.txt"
     # if no output file is provided 
     if(args.output is None):
         print("No output file provided. Using ./output.txt")

@@ -2,7 +2,7 @@
 <declarations> ::= {<declaration>}
 <declaration> ::= <function_declaration> | <constant_declaration>
 <function_declaration> ::= FUNCTION <return_type> ID LPAREN [<formal_params> {, <formal_params>}] RPAREN <block>
-<formal_params> ::= DATATYPE ID
+<formal_params> ::= (INT/BOOLEAN) ID
 <return_type> ::= DATATYPE | VOID
 <constant_declaration> ::= CONSTANT DATATYPE ID ASSIGNMENT (INTEGER | BOOLEAN)
 <init_block> ::= INIT LBRACE <grid_size> <mandatory_agent> <mandatory_wumpus> <mandatory_gold> {<init_statement>} RBRACE
@@ -32,12 +32,10 @@
 <function_call> ::= ID LPAREN [ID {, ID}] RPAREN
 <return_statement> ::= RETURN <element> 
 <block> ::= LBRACE <statement> { <statement> } RBRACE
-
 <conditional_expression> ::= <term> { LOGIC <term>}
 <term> ::= <element> { COMPARISON <element>}
-<element> ::= <factor> | <sense>
+<element> ::= <expr> | <sense>
 
-<factor> ::= <operand> { OPERATOR <operand>}
-<operand> ::= BOOLEAN | INTEGER | <function_call> | <var>
-<var> ::= ID [LEFTBRACKET <> RIGHTBRACKET]
-
+<expr> ::= <term> [ (PLUS | MINUS)  <term> ]
+<exprfac> ::= <exprbase> [ (PRODUCT | FRAC) <exprbase> ]
+<exprbase> ::= LPAREN <expr> RPAREN | ID [LEFTBRACKET <expr> RIGHTBRACKET]  |  <function_call> | INTEGER | BOOLEAN

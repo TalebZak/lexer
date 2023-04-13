@@ -22,6 +22,7 @@ reserved = {
     'place_pit': 'PLACE_PIT',
     'place_gold': 'PLACE_GOLD',
     'clear_room': 'CLEAR_ROOM',
+    'place_agent': 'PLACE_AGENT',
     'north': 'NORTH',
     'south': 'SOUTH',
     'east': 'EAST',
@@ -34,14 +35,15 @@ reserved = {
     'while': 'WHILE',
     'if': 'IF',
     'else': 'ELSE',
-    'bool': 'DATATYPE',
-    'int': 'DATATYPE',
+    'bool': 'BOOLDTYPE',
+    'int': 'INTDTYPE',
     'grab': 'GRAB',
     'grid_size': 'GRID_SIZE',
     'sense_stench': 'SENSE_STENCH',
     'sense_breeze': 'SENSE_BREEZE',
     'sense_glitter': 'SENSE_GLITTER',
     'print_position': 'PRINT_POSITION',
+
     'void': 'VOID',
 
 }
@@ -51,8 +53,9 @@ tokens = (
     'RETURN', 'INIT', 'PLAY', 'MOVE', 'SHOOT', 'PLACE_WUMPUS', 'PLACE_PIT', 'PLACE_GOLD',
     'CLEAR_ROOM', 'NORTH', 'SOUTH', 'EAST', 'WEST', 'BOOLEAN', 'VOID', 'OPERATOR',
     'COMPARISON', 'LOGIC', 'SPACE', 'COMMENT', 'CONSTANT', 'IF',
-    'ELSE', 'LEFTBRACKET', 'RIGHTBRACKET', 'ASSIGNMENT', 'DATATYPE', 'GRAB',
+    'ELSE', 'LEFTBRACKET', 'RIGHTBRACKET', 'ASSIGNMENT', 'INTDTYPE', 'BOOLDTYPE', 'GRAB',
     'GRID_SIZE', 'SENSE_STENCH', 'SENSE_BREEZE', 'SENSE_GLITTER', 'PRINT_POSITION', 'WHILE', 'VOID',
+    'PLACE_AGENT', 'MINUS', 'PLUS', 'MULTIPLY', 'DIVIDE'
 )
 
 # Characters to ignore while lexing
@@ -65,7 +68,10 @@ t_LBRACE = r'\{'
 t_RBRACE = r'\}'
 t_COMMA = r','
 t_INTEGER = r'[0-9]+'
-t_OPERATOR = r'\+|-'
+t_PLUS = r'\+'
+t_MINUS = r'-'
+t_MULTIPLY = r'\*'
+t_DIVIDE = r'/'
 t_COMPARISON = r'==|!=|<=|<|>=|>'
 t_LOGIC = r'and|or'
 t_COMMENT = r'\$.+\$'
