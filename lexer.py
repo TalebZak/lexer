@@ -59,7 +59,7 @@ tokens = (
 )
 
 # Characters to ignore while lexing
-t_ignore = r'\t|\n| '
+t_ignore = r' \t | \R'
 
 # Regular expressions for tokens
 t_LPAREN = r'\('
@@ -82,7 +82,6 @@ t_ASSIGNMENT = r'='
 # Error handling rule
 def t_error(t):
     # Print an error message
-    print(Fore.RED + Style.BRIGHT + f"Illegal character '{t.value[0]}' at line {t.lexer.lineno}" + Style.RESET_ALL)
     t.lexer.skip(1)
 
 def t_ID(t):
@@ -91,7 +90,7 @@ def t_ID(t):
     return t
 
 def t_newline(t):
-    r'\n+'
+    r'(\n)+'
     t.lexer.lineno += len(t.value)
 
 # Function to test lexer with a given input string

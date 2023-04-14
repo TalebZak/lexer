@@ -1,10 +1,10 @@
 <program> ::= <declarations> <init_block> <play_block>
-<declarations> ::= {<declaration>}
-<declaration> ::= <function_declaration> | <constant_declaration>
-<function_declaration> ::= FUNCTION <return_type> ID LPAREN [<formal_params> {, <formal_params>}] RPAREN <block>
-<formal_params> ::= (INT/BOOLEAN) ID
-<return_type> ::= DATATYPE | VOID
-<constant_declaration> ::= CONSTANT DATATYPE ID ASSIGNMENT (INTEGER | BOOLEAN)
+<declarations> ::= {<function_declaration> | <constant_declaration>}
+<function_declaration> ::= FUNCTION <return_type> ID LPAREN [<formal_params> {COMMA <formal_params>}] RPAREN <block>
+<formal_params> ::= (INTDTYPE|BOOLDTYPE) ID
+<return_type> ::= BOOLDTYPE | INTDTYPE | VOID
+
+<constant_declaration> ::= CONSTANT (INTDTYPE|BOOLDTYPE) ID ASSIGNMENT (INTEGER | BOOLEAN)
 <init_block> ::= INIT LBRACE <grid_size> <mandatory_agent> <mandatory_wumpus> <mandatory_gold> {<init_statement>} RBRACE
 <grid_size> ::= GRID_SIZE LPAREN <location> RPAREN
 <mandatory_agent> ::= PLACE_AGENT LPAREN <location> RPAREN
@@ -14,8 +14,8 @@
 <init_statement> ::= PLACE_PIT LPAREN <location> RPAREN | CLEAR_ROOM LPAREN <location> RPAREN
 <location> ::= INTEGER COMMA INTEGER
 <play_block> ::= PLAY LBRACE <statement> {<statement>} RBRACE
-<statement> ::= <move_statement> | <shoot_statement> | <grab_statement> | <print_position_statement> | <if_statement> | <while_statement> | <assignment> | <function_call> | <return_statement>
-
+<statement> ::= <move_statement> | <shoot_statement> | <grab_statement> | <print_position_statement> | <if_statement> | <while_statement> | <action_assignment> | <return_statement>
+<var_declaration> ::= (INTDTYPE|BOOLDTYPE) ID {LEFTBRACKET INTEGER RIGHTBRACKET}
 <move_statement> ::= MOVE LPAREN <direction> RPAREN
 <shoot_statement> ::= SHOOT LPAREN <direction> RPAREN
 <grab_statement> ::= GRAB LPAREN RPAREN
@@ -28,14 +28,15 @@
 
 <if_statement> ::= IF LPAREN <conditional_expression> RPAREN <block> [ELSE <block>]
 <while_statement> ::= WHILE LPAREN <conditional_expression> RPAREN <block>
-<assignment> ::= <var> ASSIGNMENT  <factor>
-<function_call> ::= ID LPAREN [ID {, ID}] RPAREN
-<return_statement> ::= RETURN <element> 
+<var> ::= ID [LEFTBRACKET <expr> RIGHTBRACKET]
+<action_assignment> ::= <var> ASSIGNMENT (<element> | ID LPAREN [ID {COMMA ID}] RPAREN)
+
+<return_statement> ::= RETURN <expr> 
 <block> ::= LBRACE <statement> { <statement> } RBRACE
 <conditional_expression> ::= <term> { LOGIC <term>}
 <term> ::= <element> { COMPARISON <element>}
-<element> ::= <expr> | <sense>
+<element> ::= <sense> | <expr>  
 
-<expr> ::= <term> [ (PLUS | MINUS)  <term> ]
-<exprfac> ::= <exprbase> [ (PRODUCT | FRAC) <exprbase> ]
-<exprbase> ::= LPAREN <expr> RPAREN | ID [LEFTBRACKET <expr> RIGHTBRACKET]  |  <function_call> | INTEGER | BOOLEAN
+<expr> ::= <exprfac> [ (PLUS | MINUS)  <exprfac> ]
+<exprfac> ::= <exprbase> [ (MULTIPLY | DIVIDE) <exprbase> ]
+<exprbase> ::= <var> | INTEGER | BOOLEAN | LPAREN <expr> RPAREN | MINUS <exprbase>

@@ -1,21 +1,14 @@
-const int size = 5
+const bool bool_cons = false
 
-init {
-  grid_size(5, 5) $ Comment with whitespace$
-  place_agent(0, 0)$Comment without whitespace$
-  place_wumpus(4, 4)
-  place_gold(4, 0)
-  place_pit(1, 1)
-  place_pit(1, 3)
-  place_pit(3, 1)
-  place_pit(3, 3)
+init 
+{
+	grid_size(9,9)
+	place_agent(0,0)
+	place_wumpus(0,3)
+	place_gold(1,1)
 }
 
-play {
-  if (sense_breeze() == false && sense_stench() == false) {
-    move(north)
-    $Another comment$
-  }
-  shoot(west) $A comment after shooting$
-  move(west)
+play
+{
+	move(north)
 }

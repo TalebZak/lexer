@@ -10,7 +10,8 @@ function bool my_function2(bool a, bool b) {
 }
 
 function void my_function3(int a) {
-  int i = 0
+  int i
+  
   while (i < a) {
     move(north)
     i = i + 1
@@ -31,8 +32,10 @@ play {
     grab()
     my_function3(3)
   }
-  int sum = my_function1(1, 2)
-  int i = 0
+  int sum 
+  sum = my_function1(1, 2)
+  int i
+  i = 0
   while (i < sum) {
     move(east)
     i = i + 1
